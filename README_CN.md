@@ -99,15 +99,15 @@ npm link @lifeiheng/vue-starfall
 
 ### 安装
 ```bash
-npm install @lifeiheng/vue-starfall
+npm install @vjsplus-j/vue-starfall
 https://github.com/vjsplus-j/vue-starfall
 ```
 
 ### 使用
 ```vue
 <script setup lang="ts">
-import { ThemeBackground, LoginTheme } from '@lifeiheng/vue-starfall'
-import '@lifeiheng/vue-starfall/dist/style.css'
+import { ThemeBackground, LoginTheme } from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/dist/style.css'
 </script>
 
 <template>

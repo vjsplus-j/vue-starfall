@@ -1,6 +1,6 @@
 # 🌌 Vue Starfall SDK - 项目总结
 
-> **包名**: `@lifeiheng/vue-starfall`  
+> **包名**: `@vjsplus-j/vue-starfall`  
 > **作者**: 李飞恒  
 > **版本**: 1.0.0  
 > **版权**: Copyright © 2025 李飞恒. All rights reserved.  

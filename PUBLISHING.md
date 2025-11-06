@@ -12,7 +12,7 @@
 确保你已经:
 - ✅ 注册了 npm 账号
 - ✅ 在本地登录了 npm (`npm login`)
-- ✅ 包名可用 (检查: `npm info @lifeiheng/vue-starfall`)
+- ✅ 包名可用 (检查: `npm info @vjsplus-j/vue-starfall`)
 
 ### 2. 发布前检查
 

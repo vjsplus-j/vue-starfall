@@ -4,7 +4,7 @@
 
 **Vue3 星空主题组件库 - 让你的应用璀璨如星河**
 
-[![npm version](https://img.shields.io/npm/v/@lifeiheng/vue-starfall.svg)](https://www.npmjs.com/package/@lifeiheng/vue-starfall)
+[![npm version](https://img.shields.io/npm/v/@vjsplus-j/vue-starfall.svg)](https://www.npmjs.com/package/@vjsplus-j/vue-starfall)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Vue 3](https://img.shields.io/badge/Vue-3.x-brightgreen.svg)](https://vuejs.org/)
 
@@ -31,13 +31,13 @@
 
 ```bash
 # npm
-npm install @lifeiheng/vue-starfall
+npm install @vjsplus-j/vue-starfall
 
 # yarn
-yarn add @lifeiheng/vue-starfall
+yarn add @vjsplus-j/vue-starfall
 
 # pnpm
-pnpm add @lifeiheng/vue-starfall
+pnpm add @vjsplus-j/vue-starfall
 ```
 
 ---

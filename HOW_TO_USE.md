@@ -10,11 +10,11 @@
 在你的 Vue 3 项目中安装:
 
 ```bash
-npm install @lifeiheng/vue-starfall
+npm install @vjsplus-j/vue-starfall
 # 或
-yarn add @lifeiheng/vue-starfall
+yarn add @vjsplus-j/vue-starfall
 # 或
-pnpm add @lifeiheng/vue-starfall
+pnpm add @vjsplus-j/vue-starfall
 ```
 
 ---
@@ -26,8 +26,8 @@ pnpm add @lifeiheng/vue-starfall
 ```typescript
 // main.ts
 import { createApp } from 'vue'
-import VueStarfall from '@lifeiheng/vue-starfall'
-import '@lifeiheng/vue-starfall/dist/style.css'
+import VueStarfall from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/dist/style.css'
 import App from './App.vue'
 
 const app = createApp(App)

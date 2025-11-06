@@ -28,8 +28,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ThemeBackground, LoginTheme, type LoginFormData } from '@lifeiheng/vue-starfall'
-import '@lifeiheng/vue-starfall/dist/style.css'
+import { ThemeBackground, LoginTheme, type LoginFormData } from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/dist/style.css'
 
 const loading = ref(false)
 const errorMsg = ref('')

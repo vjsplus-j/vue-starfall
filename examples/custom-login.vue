@@ -75,8 +75,8 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { LoginTheme } from '@lifeiheng/vue-starfall'
-import '@lifeiheng/vue-starfall/dist/style.css'
+import { LoginTheme } from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/dist/style.css'
 import { ElMessage } from 'element-plus'
 import { User, Lock } from '@element-plus/icons-vue'
 
