@@ -1,0 +1,9 @@
+src/
+*.ts
+!*.d.ts
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+.gitignore
+.npmignore
+node_modules/

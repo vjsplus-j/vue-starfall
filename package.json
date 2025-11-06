@@ -1,0 +1,71 @@
+{
+  "name": "@lifeiheng/vue-starfall",
+  "version": "1.0.0",
+  "description": "🌌 Vue3星空主题组件库 - 让你的应用璀璨如星河",
+  "author": "李飞恒",
+  "license": "Apache-2.0",
+  "copyright": "Copyright © 2025 李飞恒. All rights reserved.",
+  "keywords": [
+    "vue",
+    "vue3",
+    "theme",
+    "starry",
+    "login",
+    "glassmorphism",
+    "background",
+    "ui-components"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "element-plus": {
+      "optional": true
+    },
+    "@element-plus/icons-vue": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "sass": "^1.81.0",
+    "terser": "^5.44.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vue": "^3.5.12",
+    "vue-tsc": "^3.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vjsplus-j/vue-starfall"
+  },
+  "bugs": {
+    "url": "https://github.com/vjsplus-j/vue-starfall/issues"
+  },
+  "homepage": "https://github.com/vjsplus-j/vue-starfall#readme",
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
