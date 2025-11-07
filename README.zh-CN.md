@@ -22,12 +22,22 @@
 ## 📸 效果图
 
 ### AI大脑主题 - HUD科技圆环系统
-<img src="./screenshots/AI-Brain.png" alt="AI大脑主题" width="800">
+
+**英文版：**
+<img src="./screenshots/AI-Brain-EN.png" alt="AI大脑主题 - 英文版" width="800">
+
+**中文版：**
+<img src="./screenshots/AI-Brain-CH.png" alt="AI大脑主题 - 中文版" width="800">
 
 *包含粒子圆环系统、交替旋转、刻度标记、数据点和神经脉冲效果*
 
 ### 仙女座星系主题
-<img src="./screenshots/andromeda.png" alt="仙女座星系主题" width="800">
+
+**英文版：**
+<img src="./screenshots/Andromeda-EN.png" alt="仙女座星系主题 - 英文版" width="800">
+
+**中文版：**
+<img src="./screenshots/Andromeda-CH.png" alt="仙女座星系主题 - 中文版" width="800">
 
 *包含星系核心、螺旋臂、星云节点和星星闪烁效果*
 
