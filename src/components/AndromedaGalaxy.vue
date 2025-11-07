@@ -24,7 +24,9 @@ const props = withDefaults(defineProps<AndromedaGalaxyProps>(), {
   animationSpeed: 1,
   enableCoreGlow: true,
   enableNebula: true,
-  performance: 'auto'
+  performance: 'auto',
+  useFixedPositions: false,
+  randomSeed: 12345
 })
 
 // Emits
@@ -36,7 +38,19 @@ const emit = defineEmits<{
 
 const stars = ref<StarStyle[]>([])
 
-const rand = (min: number, max: number): string => (Math.random() * (max - min) + min).toFixed(2)
+// 固定随机数生成器（使用种子）
+let seedValue = props.randomSeed
+const seededRandom = (): number => {
+  seedValue = (seedValue * 9301 + 49297) % 233280
+  return seedValue / 233280
+}
+
+// 随机数函数（根据useFixedPositions选择）
+const getRandom = (): number => {
+  return props.useFixedPositions ? seededRandom() : Math.random()
+}
+
+const rand = (min: number, max: number): string => (getRandom() * (max - min) + min).toFixed(2)
 
 // 根据性能配置计算实际数量
 const actualStarCount = computed(() => {
@@ -55,8 +69,8 @@ onMounted(() => {
 
   stars.value = Array.from({ length: starCount }, (): StarStyle => {
     // 仙女座星系参数 - 三层结构
-    const isCore: boolean = Math.random() < props.coreRatio // 核心区
-    const isArm: boolean = Math.random() < props.armRatio // 旋臂
+    const isCore: boolean = getRandom() < props.coreRatio // 核心区
+    const isArm: boolean = getRandom() < props.armRatio // 旋臂
 
     let left: number
     let top: number
@@ -64,28 +78,28 @@ onMounted(() => {
 
     if (isCore) {
       // 核心区域：密集且明亮
-      const coreRadius: number = Math.random() * 10
-      const coreAngle: number = Math.random() * Math.PI * 2
+      const coreRadius: number = getRandom() * 10
+      const coreAngle: number = getRandom() * Math.PI * 2
       left = centerX + Math.cos(coreAngle) * coreRadius
       top = centerY + Math.sin(coreAngle) * coreRadius * 0.6 // 椭圆形
-      depth = 0.85 + Math.random() * 0.15 // 核心星星非常亮
+      depth = 0.85 + getRandom() * 0.15 // 核心星星非常亮
     } else if (isArm) {
       // 螺旋臂：多条主旋臂
-      const armIndex: number = Math.floor(Math.random() * 8)
-      const distance: number = 15 + Math.random() * 45 // 距离中心
+      const armIndex: number = Math.floor(getRandom() * 8)
+      const distance: number = 15 + getRandom() * 45 // 距离中心
       const spiralTightness: number = 0.75 // 螺旋紧密度
-      const angle: number = (distance * spiralTightness + armIndex * Math.PI) + (Math.random() - 0.5) * 0.8
+      const angle: number = (distance * spiralTightness + armIndex * Math.PI) + (getRandom() - 0.5) * 0.8
 
       left = centerX + Math.cos(angle) * distance
       top = centerY + Math.sin(angle) * distance * 0.6 // 椭圆形
-      depth = 0.4 + Math.random() * 0.4
+      depth = 0.4 + getRandom() * 0.4
     } else {
       // 外围稀疏区域
-      const outerDistance: number = 25 + Math.random() * 50
-      const outerAngle: number = Math.random() * Math.PI * 2
+      const outerDistance: number = 25 + getRandom() * 50
+      const outerAngle: number = getRandom() * Math.PI * 2
       left = centerX + Math.cos(outerAngle) * outerDistance
       top = centerY + Math.sin(outerAngle) * outerDistance * 0.6
-      depth = 0.2 + Math.random() * 0.3
+      depth = 0.2 + getRandom() * 0.3
     }
 
     // 确保在视野范围内
@@ -122,8 +136,6 @@ onMounted(() => {
   inset: 0;
   pointer-events: none;
   z-index: 3;
-  transform: rotate(-15deg); /* 仙女座星系的真实倾斜角度 */
-  transform-origin: center center;
 }
 
 .star {
@@ -176,25 +188,79 @@ onMounted(() => {
   50% { opacity: 1; }
 }
 
-/* 星系核心光晕 */
+/* 星系核心光晕 - 高对比度真实仙女座 */
 .galaxy-core-glow {
   position: absolute;
-  width: 25vmax;
-  height: 28vmax;
-  left: 32%;
+  width: 45vmax;
+  height: 22vmax;
+  left: 20%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(
-    ellipse 80% 100% at 30% 50%,
-    rgba(255, 255, 255, 0.30) 0%,
-    rgba(255, 255, 245, 0.20) 20%,
-    rgba(255, 250, 230, 0.12) 40%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  filter: blur(45px);
+  background: 
+    /* 超亮核心 - 白色 */
+    radial-gradient(
+      ellipse 8% 12% at 50% 50%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.95) 20%,
+      rgba(255, 255, 250, 0.85) 40%,
+      transparent 60%
+    ),
+    /* 强烈的黄色层 */
+    radial-gradient(
+      ellipse 15% 22% at 50% 50%,
+      rgba(255, 245, 200, 0.9) 0%,
+      rgba(255, 230, 180, 0.75) 30%,
+      rgba(255, 215, 150, 0.5) 60%,
+      transparent 80%
+    ),
+    /* 橙色过渡 */
+    radial-gradient(
+      ellipse 25% 35% at 50% 50%,
+      rgba(255, 180, 120, 0.7) 0%,
+      rgba(255, 150, 100, 0.55) 30%,
+      rgba(255, 130, 80, 0.35) 60%,
+      transparent 85%
+    ),
+    /* 粉橙色 */
+    radial-gradient(
+      ellipse 35% 50% at 50% 50%,
+      rgba(255, 140, 140, 0.6) 0%,
+      rgba(255, 120, 150, 0.45) 30%,
+      rgba(240, 100, 160, 0.3) 60%,
+      transparent 90%
+    ),
+    /* 紫粉色螺旋臂 */
+    radial-gradient(
+      ellipse 50% 70% at 50% 50%,
+      rgba(220, 140, 255, 0.55) 0%,
+      rgba(200, 120, 255, 0.4) 25%,
+      rgba(180, 100, 240, 0.28) 50%,
+      rgba(160, 80, 220, 0.15) 75%,
+      transparent 95%
+    ),
+    /* 外围深紫蓝 */
+    radial-gradient(
+      ellipse 70% 90% at 50% 50%,
+      rgba(140, 100, 220, 0.35) 0%,
+      rgba(120, 80, 200, 0.22) 40%,
+      rgba(100, 60, 180, 0.12) 70%,
+      transparent 100%
+    );
+  filter: blur(20px);
   mix-blend-mode: screen;
-  z-index: 0;
-  animation: pulse 7s ease-in-out infinite reverse;
+  z-index: 2;
+  animation: galaxy-pulse 6s ease-in-out infinite;
+}
+
+@keyframes galaxy-pulse {
+  0%, 100% {
+    opacity: 0.85;
+    filter: blur(20px) brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(18px) brightness(1.15);
+  }
 }
 
 @keyframes pulse {
@@ -209,42 +275,68 @@ onMounted(() => {
   }
 }
 
-/* 星云光晕节点 */
+/* 星云光晕节点 - 增强的螺旋臂 */
 .nebula-nodes {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-      circle at 25% 35%,
-      rgba(100, 220, 255, 0.25) 0%,
-      rgba(100, 220, 255, 0.15) 15%,
-      transparent 30%
+  background: 
+    /* 主螺旋臂1 - 明亮紫粉色 */
+    radial-gradient(
+      ellipse 45% 18% at 18% 48%,
+      rgba(240, 180, 255, 0.65) 0%,
+      rgba(220, 160, 255, 0.5) 25%,
+      rgba(200, 140, 255, 0.35) 50%,
+      rgba(180, 120, 240, 0.18) 75%,
+      transparent 100%
+    ),
+    /* 主螺旋臂2 - 明亮粉紫色 */
+    radial-gradient(
+      ellipse 40% 15% at 22% 52%,
+      rgba(255, 160, 220, 0.6) 0%,
+      rgba(240, 140, 240, 0.45) 25%,
+      rgba(220, 120, 255, 0.3) 50%,
+      rgba(200, 100, 240, 0.15) 75%,
+      transparent 100%
+    ),
+    /* 星尘密集区1 */
+    radial-gradient(
+      circle at 17% 40%,
+      rgba(220, 160, 255, 0.45) 0%,
+      rgba(200, 140, 255, 0.3) 15%,
+      rgba(180, 120, 240, 0.15) 30%,
+      transparent 50%
+    ),
+    /* 星尘密集区2 */
+    radial-gradient(
+      circle at 23% 60%,
+      rgba(240, 150, 255, 0.4) 0%,
+      rgba(220, 130, 255, 0.25) 15%,
+      rgba(200, 110, 240, 0.12) 30%,
+      transparent 50%
+    ),
+    /* 次级螺旋臂 */
+    radial-gradient(
+      ellipse 30% 10% at 12% 55%,
+      rgba(200, 140, 255, 0.35) 0%,
+      rgba(180, 120, 240, 0.2) 40%,
+      transparent 80%
     ),
     radial-gradient(
-      circle at 75% 25%,
-      rgba(120, 180, 255, 0.20) 0%,
-      rgba(120, 180, 255, 0.12) 12%,
-      transparent 25%
+      ellipse 28% 10% at 28% 45%,
+      rgba(220, 150, 255, 0.3) 0%,
+      rgba(200, 130, 240, 0.18) 40%,
+      transparent 80%
     ),
+    /* 外围光晕增强 */
     radial-gradient(
-      circle at 60% 70%,
-      rgba(80, 200, 255, 0.18) 0%,
-      rgba(80, 200, 255, 0.10) 15%,
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 15% 75%,
-      rgba(140, 160, 255, 0.15) 0%,
-      rgba(140, 160, 255, 0.08) 10%,
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at 85% 65%,
-      rgba(90, 210, 255, 0.16) 0%,
-      rgba(90, 210, 255, 0.08) 13%,
-      transparent 26%
+      ellipse 60% 40% at 20% 50%,
+      rgba(160, 120, 255, 0.25) 0%,
+      rgba(140, 100, 240, 0.15) 40%,
+      rgba(120, 80, 220, 0.08) 70%,
+      transparent 100%
     );
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
   mix-blend-mode: screen;
   animation: nebula-pulse 8s ease-in-out infinite alternate;
 }

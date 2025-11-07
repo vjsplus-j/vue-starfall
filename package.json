@@ -1,6 +1,6 @@
 {
   "name": "@vjsplus-j/vue-starfall",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "🌌 Vue 3 星空主题背景组件库 - 包含AI星空和仙女座星系两大主题，支持性能优化和事件系统",
   "type": "module",
   "author": "Copyright © 2025 李飞恒. All rights reserved.",
@@ -51,7 +51,7 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.9.3",
     "vite": "^7.1.12",
-    "vite-plugin-dts": "^3.7.0",
+    "vite-plugin-dts": "^4.5.4",
     "vue": "^3.5.12",
     "vue-tsc": "^2.0.6"
   },

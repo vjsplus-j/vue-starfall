@@ -1,20 +1,20 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import dts from 'vite-plugin-dts'
+// import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
-    dts({
-      include: ['src/**/*.vue', 'src/**/*.ts'],
-      staticImport: true,
-      insertTypesEntry: true,
-      cleanVueFileName: true,
-      skipDiagnostics: false,
-      logDiagnostics: true
-    })
+    vue()
+    // dts({
+    //   include: ['src/**/*.vue', 'src/**/*.ts'],
+    //   staticImport: true,
+    //   insertTypesEntry: true,
+    //   cleanVueFileName: true,
+    //   skipDiagnostics: false,
+    //   logDiagnostics: true
+    // })
   ],
   build: {
     lib: {

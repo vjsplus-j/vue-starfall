@@ -25,6 +25,8 @@
       <AndromedaGalaxy 
         v-else-if="theme === 'andromeda'"
         :performance="actualPerformance"
+        :use-fixed-positions="useFixedPositions"
+        :random-seed="randomSeed"
         @loaded="handleLoaded"
         @performance-change="handlePerformanceChange"
         @error="handleError"
@@ -54,7 +56,9 @@ const props = withDefaults(defineProps<GalaxyBackgroundProps>(), {
   watermarkOpacity: 0.3,
   performance: 'auto',
   autoDetect: true,
-  enableDataflow: true
+  enableDataflow: true,
+  useFixedPositions: false,
+  randomSeed: 12345
 })
 
 // Emits

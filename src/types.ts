@@ -133,6 +133,10 @@ export interface AndromedaGalaxyProps {
   enableNebula?: boolean
   /** 性能级别，默认 'auto' */
   performance?: PerformanceLevel
+  /** 是否使用固定位置（不随机），默认 false */
+  useFixedPositions?: boolean
+  /** 固定位置的随机种子，默认 12345 */
+  randomSeed?: number
 }
 
 /**
@@ -155,6 +159,10 @@ export interface GalaxyBackgroundProps {
   autoDetect?: boolean
   /** 是否启用数据流网格，默认 true */
   enableDataflow?: boolean
+  /** 是否使用固定位置（不随机），默认 false */
+  useFixedPositions?: boolean
+  /** 固定位置的随机种子，默认 12345 */
+  randomSeed?: number
 }
 
 /**
