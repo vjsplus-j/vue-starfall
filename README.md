@@ -211,9 +211,35 @@ Built-in performance optimization mechanisms:
 - ✅ **CSS Animations** - GPU accelerated, excellent performance
 - ✅ **Lazy Loading** - Components loaded on demand
 
+### Performance Levels
+
+Use the `performance` prop to control rendering quality:
+
+```vue
+<GalaxyBackground performance="medium">
+  <!-- Your content -->
+</GalaxyBackground>
+```
+
+**Performance Comparison:**
+
+| Level | Stars | Particles | Nebula Layers | Use Case |
+|-------|-------|-----------|---------------|----------|
+| `high` | 150 | 20 | 3 | Demo/Showcase pages |
+| `medium` | 100 | 14 | 2 | Login/Landing pages ⭐ |
+| `low` | 50 | 7 | 1 | Dashboard/Work pages |
+| `auto` | Auto-detected based on device | | | Default (Recommended) |
+
+**Performance Impact:**
+
+- **high**: Best visual quality, higher GPU/CPU usage
+- **medium**: Balanced quality and performance (recommended for most pages)
+- **low**: Minimal resource usage, suitable for work environments
+- **auto**: Automatically adjusts based on device capabilities
+
 ### Manual Optimization
 
-If you encounter performance issues, manually reduce element count:
+For individual components, you can manually control element count:
 
 ```vue
 <AIBrain :star-count="100" :particle-count="10" />
