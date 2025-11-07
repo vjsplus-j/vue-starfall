@@ -19,6 +19,20 @@ Beautiful galaxy theme background components, featuring **AI Starfield** and **A
 
 ---
 
+## 📸 Screenshots
+
+### AI Brain Theme - HUD Tech Rings System
+<img src="./screenshots/AI-Brain.png" alt="AI Brain Theme" width="800">
+
+*Features particle ring system, alternating rotation, scale markers, data points, and neural pulse effects*
+
+### Andromeda Galaxy Theme
+<img src="./screenshots/andromeda.png" alt="Andromeda Galaxy Theme" width="800">
+
+*Features galaxy core, spiral arms, nebula nodes, and star twinkling effects*
+
+---
+
 ## ✨ Features
 
 - 🌌 **Two Beautiful Themes** - AI Starfield & Andromeda Galaxy
