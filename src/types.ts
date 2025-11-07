@@ -107,6 +107,8 @@ export interface AIBrainProps {
   enableNebula?: boolean
   /** 是否启用伴星，默认 true */
   enableCompanion?: boolean
+  /** 是否启用神经网络连接线，默认 true */
+  enableNeuralNetwork?: boolean
   /** 性能级别，默认 'auto' */
   performance?: PerformanceLevel
 }
