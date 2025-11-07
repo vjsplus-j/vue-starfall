@@ -1,54 +1,52 @@
-/**
- * Vue Starfall SDK - Build Configuration
- * @author 李飞恒
- * @copyright Copyright © 2025 李飞恒. All rights reserved.
- * @license Apache-2.0
- */
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      include: ['src/**/*.vue', 'src/**/*.ts'],
+      staticImport: true,
+      insertTypesEntry: true,
+      cleanVueFileName: true,
+      skipDiagnostics: false,
+      logDiagnostics: true
+    })
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'VueStarfall',
-      formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`
+      formats: ['es', 'umd'],
+      fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      external: ['vue', 'element-plus', '@element-plus/icons-vue'],
+      // 确保外部化处理那些你不想打包进库的依赖
+      external: ['vue'],
       output: {
+        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
-          vue: 'Vue',
-          'element-plus': 'ElementPlus',
-          '@element-plus/icons-vue': 'ElementPlusIconsVue'
+          vue: 'Vue'
         },
-        exports: 'named',
+        // 保持资源文件名简洁
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'style.css'
-          }
-          return assetInfo.name || 'assets/[name].[ext]'
+          if (assetInfo.name === 'style.css') return 'style.css'
+          return assetInfo.name || 'assets/[name][extname]'
         }
       }
     },
     cssCodeSplit: false,
-    sourcemap: true,
-    minify: 'terser',
-    terserOptions: {
-      format: {
-        comments: /^!/
-      }
-    }
+    // 清空输出目录
+    emptyOutDir: true,
+    // 生成 sourcemap
+    sourcemap: true
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "./src/styles/variables.scss" as *;`
-      }
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
     }
   }
 })

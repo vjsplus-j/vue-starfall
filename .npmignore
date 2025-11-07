@@ -1,9 +1,36 @@
+# 源代码（已编译到dist）
 src/
+*.vue
 *.ts
 !*.d.ts
+
+# 配置文件
+vite.config.ts
 tsconfig.json
 tsconfig.node.json
-vite.config.ts
 .gitignore
-.npmignore
+
+# 开发文件
 node_modules/
+*.log
+*.lock
+yarn.lock
+package-lock.json
+
+# 测试和开发
+tests/
+examples/
+.vscode/
+.idea/
+
+# 文档（保留必要的）
+发布指南.md
+FEATURES.md
+
+# 其他
+.DS_Store
+*.swp
+*.swo
+*~
+.cache/
+.temp/

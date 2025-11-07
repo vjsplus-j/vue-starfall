@@ -1,33 +1,34 @@
-# Vue Starfall 🌌
+# @vjsplus-j/vue-starfall
 
 <div align="center">
 
-**Vue3 星空主题组件库 - 让你的应用璀璨如星河**
+✨ **Vue 3 星空主题背景组件库** ✨
 
 [![npm version](https://img.shields.io/npm/v/@vjsplus-j/vue-starfall.svg)](https://www.npmjs.com/package/@vjsplus-j/vue-starfall)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Vue 3](https://img.shields.io/badge/Vue-3.x-brightgreen.svg)](https://vuejs.org/)
+[![license](https://img.shields.io/npm/l/@vjsplus-j/vue-starfall.svg)](https://github.com/vjsplus-j/vue-starfall/blob/main/LICENSE)
 
-[English](./README.md) | [中文文档](./README.zh-CN.md)
+精美的星空主题背景组件，包含 **AI星空** 和 **仙女座星系** 两大主题
+
+[在线演示](https://vjsplus-j.github.io/vue-starfall) | [GitHub](https://github.com/vjsplus-j/vue-starfall)
 
 </div>
 
 ---
 
-## ✨ Features
+## ✨ 特性
 
-- 🌌 **Stunning Starry Background** - Realistic starry sky with stars, nebulae, planets, and Milky Way
-- 🎨 **Glass Morphism Design** - Modern glassmorphism card effect
-- 📱 **Responsive** - Auto-adapts for mobile and desktop devices
-- ⚡ **Performance Optimized** - Smart performance adjustment based on device capabilities
-- 🎭 **Smooth Animations** - Elegant transitions and interactions
-- 🔧 **Highly Customizable** - Flexible slots and props for full control
-- 💪 **TypeScript Support** - Complete type definitions
-- 🎯 **Zero Configuration** - Works out of the box
+- 🌌 **两大精美主题** - AI星空 & 仙女座星系
+- 🎨 **动态动画效果** - 流畅的星星闪烁、粒子环绕、星云飘动
+- 📱 **响应式设计** - 自动适配移动端和桌面端
+- ⚡ **智能性能优化** - 自动设备检测，动态调节渲染元素
+- 🎭 **TypeScript支持** - 完整的类型定义
+- 🔧 **易于集成** - 支持按需导入，开箱即用
+- 💪 **零依赖** - 仅依赖 Vue 3
+- 🎉 **v2.0 新增** - 主题配置增强、事件系统、工具函数导出
 
 ---
 
-## 📦 Installation
+## 📦 安装
 
 ```bash
 # npm
@@ -42,15 +43,15 @@ pnpm add @vjsplus-j/vue-starfall
 
 ---
 
-## 🚀 Quick Start
+## 🚀 快速开始
 
-### Global Registration
+### 全局注册（推荐）
 
 ```typescript
 // main.ts
 import { createApp } from 'vue'
-import VueStarfall from '@lifeiheng/vue-starfall'
-import '@lifeiheng/vue-starfall/dist/style.css'
+import VueStarfall from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -58,251 +59,231 @@ app.use(VueStarfall)
 app.mount('#app')
 ```
 
-### Component Registration
-
-```vue
-<script setup lang="ts">
-import { ThemeBackground, LoginTheme } from '@lifeiheng/vue-starfall'
-import '@lifeiheng/vue-starfall/dist/style.css'
-</script>
-```
-
----
-
-## 📖 Components
-
-### ThemeBackground
-
-Starry sky background component - provides a stunning cosmic background effect.
-
-#### Basic Usage
+### 按需导入
 
 ```vue
 <template>
-  <ThemeBackground>
-    <h1>Your Content</h1>
-  </ThemeBackground>
-</template>
-
-<script setup lang="ts">
-import { ThemeBackground } from '@lifeiheng/vue-starfall'
-</script>
-```
-
-#### Features
-
-- ⭐ Twinkling stars with depth perception
-- 🌈 Colorful nebulae with rotation
-- 🪐 Soft planet glows
-- 🌌 Milky Way band effect
-- 📱 Auto-degrades on mobile devices
-
----
-
-### LoginTheme
-
-Complete login page theme with glassmorphism design.
-
-#### Basic Usage
-
-```vue
-<template>
-  <LoginTheme
-    title="My App"
-    subtitle="Welcome Back"
-    :loading="loading"
-    :error-message="errorMsg"
-    v-model="formData"
-    @submit="handleLogin"
-    @clear-error="errorMsg = ''"
-  />
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import { LoginTheme, type LoginFormData } from '@lifeiheng/vue-starfall'
-
-const loading = ref(false)
-const errorMsg = ref('')
-const formData = ref<LoginFormData>({
-  username: '',
-  password: ''
-})
-
-const handleLogin = async (data: LoginFormData) => {
-  loading.value = true
-  try {
-    // Your login logic
-    console.log('Login:', data)
-  } catch (error) {
-    errorMsg.value = 'Login failed'
-  } finally {
-    loading.value = false
-  }
-}
-</script>
-```
-
-#### Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | `'Admin System'` | Login page title |
-| `subtitle` | `string` | `'专注后台管理 · 安全高效'` | Login page subtitle |
-| `loading` | `boolean` | `false` | Loading state |
-| `errorMessage` | `string` | `''` | Error message |
-| `modelValue` | `LoginFormData` | `{ username: '', password: '' }` | Form data (v-model) |
-
-#### Events
-
-| Event | Parameters | Description |
-|-------|-----------|-------------|
-| `submit` | `(data: LoginFormData)` | Triggered on form submit |
-| `update:modelValue` | `(data: LoginFormData)` | Form data update |
-| `clearError` | `()` | Clear error message |
-
-#### Slots
-
-| Slot | Description |
-|------|-------------|
-| `logo` | Custom logo |
-| `default` | Complete form customization |
-| `tips` | Custom footer tips |
-
-#### Advanced Usage - Custom Form
-
-```vue
-<template>
-  <LoginTheme title="Custom Login">
-    <!-- Fully custom form using Element Plus -->
-    <el-form :model="form" @submit.prevent="handleLogin">
-      <el-form-item>
-        <el-input v-model="form.username" placeholder="Username" />
-      </el-form-item>
-      <el-form-item>
-        <el-input v-model="form.password" type="password" placeholder="Password" />
-      </el-form-item>
-      <el-form-item>
-        <el-input v-model="form.captcha" placeholder="Captcha" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" native-type="submit">Login</el-button>
-      </el-form-item>
-    </el-form>
-  </LoginTheme>
-</template>
-```
-
----
-
-## 🎨 Customization
-
-### Custom Logo
-
-```vue
-<template>
-  <LoginTheme>
-    <template #logo>
-      <img src="./logo.png" alt="logo" style="width: 64px; height: 64px;" />
-    </template>
-  </LoginTheme>
-</template>
-```
-
-### Custom Tips
-
-```vue
-<template>
-  <LoginTheme>
-    <template #tips>
-      <a href="/register">Create Account</a> |
-      <a href="/forgot">Forgot Password?</a>
-    </template>
-  </LoginTheme>
-</template>
-```
-
----
-
-## 🎯 Use Cases
-
-### 404 Error Page
-
-```vue
-<template>
-  <ThemeBackground>
-    <div style="text-align: center; color: white;">
-      <h1 style="font-size: 120px;">404</h1>
-      <p>Page Not Found</p>
-      <router-link to="/">Go Home</router-link>
+  <GalaxyBackground>
+    <div class="your-content">
+      <h1>欢迎使用 Vue Starfall</h1>
     </div>
-  </ThemeBackground>
+  </GalaxyBackground>
 </template>
+
+<script setup lang="ts">
+import { GalaxyBackground } from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/style.css'
+</script>
 ```
 
-### Welcome Page
+---
+
+## 📖 组件介绍
+
+### 1. GalaxyBackground (推荐)
+
+统一的星空背景容器，默认使用 AI星空 主题。
 
 ```vue
 <template>
-  <ThemeBackground>
+  <GalaxyBackground>
+    <YourContent />
+  </GalaxyBackground>
+</template>
+```
+
+**Props:**
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `theme` | `'ai-brain' \| 'andromeda'` | `'ai-brain'` | 主题类型 |
+| `showWatermark` | `boolean` | `true` | 是否显示水印 |
+| `watermarkText` | `string` | `'GMD AI生成'` | 水印文字 |
+
+---
+
+### 2. AIBrain (AI星空主题)
+
+精美的AI星空背景，包含：
+- ⭐ 150颗动态闪烁星星
+- 🌀 3层多彩星云
+- 🪐 巨大的AI核心星球（真实的球体效果）
+- 💫 20颗环绕恒星粒子
+- 🌙 超大型伴星（月亮般的效果）
+- 🌊 能量波纹动画
+
+```vue
+<template>
+  <div class="container">
+    <AIBrain />
+    <YourContent />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { AIBrain } from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/style.css'
+</script>
+```
+
+**Props:**
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `starCount` | `number` | `150` | 星星数量 |
+| `particleCount` | `number` | `20` | 环绕粒子数量 |
+
+---
+
+### 3. AndromedaGalaxy (仙女座星系主题)
+
+真实的仙女座星系模拟，包含：
+- 🌟 720颗星星（核心区、螺旋臂、外围三层结构）
+- ✨ 多色星星（蓝、紫、绿、红、橙）
+- 🌌 星系核心光晕
+- 💫 星云光晕节点
+- 🔄 -15° 倾斜角（真实星系角度）
+
+```vue
+<template>
+  <div class="container">
+    <AndromedaGalaxy 
+      :center-x="32"
+      :center-y="50"
+      :star-count="720"
+    />
+    <YourContent />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { AndromedaGalaxy } from '@vjsplus-j/vue-starfall'
+import '@vjsplus-j/vue-starfall/style.css'
+</script>
+```
+
+**Props:**
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `centerX` | `number` | `32` | 星系中心X坐标（百分比） |
+| `centerY` | `number` | `50` | 星系中心Y坐标（百分比） |
+| `starCount` | `number` | `720` | 星星总数量 |
+| `coreRatio` | `number` | `0.20` | 核心区星星比例 |
+| `armRatio` | `number` | `0.70` | 螺旋臂星星比例 |
+
+---
+
+## 🎨 使用场景
+
+### 登录页面
+```vue
+<template>
+  <GalaxyBackground>
+    <div class="login-card">
+      <!-- 登录表单 -->
+    </div>
+  </GalaxyBackground>
+</template>
+```
+
+### 404 错误页
+```vue
+<template>
+  <GalaxyBackground>
+    <div class="error-page">
+      <h1>404</h1>
+      <p>页面未找到</p>
+    </div>
+  </GalaxyBackground>
+</template>
+```
+
+### 引导页
+```vue
+<template>
+  <GalaxyBackground>
     <div class="welcome">
-      <h1>Welcome to My App</h1>
-      <button @click="start">Get Started</button>
+      <h1>Welcome</h1>
+      <button>开始使用</button>
     </div>
-  </ThemeBackground>
+  </GalaxyBackground>
 </template>
 ```
 
 ---
 
-## ⚡ Performance Tips
+## ⚡ 性能优化
 
-The components automatically adjust performance based on device:
-- Mobile devices: Fewer stars and nebulae
-- High DPI screens: Optimized rendering
-- Desktop: Full effects enabled
+组件内置了性能优化机制：
 
-To further optimize:
+- ✅ **移动端检测** - 自动降低星星和粒子数量（减半）
+- ✅ **设备像素比检测** - 高DPI设备自动优化
+- ✅ **CSS动画** - 使用 GPU 加速，性能优异
+- ✅ **懒加载** - 组件按需加载
+
+### 手动优化
+
+如果遇到性能问题，可以手动降低元素数量：
+
+```vue
+<AIBrain :star-count="100" :particle-count="10" />
+<AndromedaGalaxy :star-count="360" />
+```
+
+---
+
+## 🎯 浏览器兼容性
+
+- ✅ Chrome >= 90
+- ✅ Firefox >= 88
+- ✅ Safari >= 14
+- ✅ Edge >= 90
+
+---
+
+## 📝 TypeScript
+
+完整的 TypeScript 类型支持：
 
 ```typescript
-// Reduce visual elements in your build
-// Edit node_modules/@lifeiheng/vue-starfall source if needed
+import type {
+  AIBrainProps,
+  AndromedaGalaxyProps,
+  GalaxyBackgroundProps,
+  ThemeType,
+  PerformanceLevel
+} from '@vjsplus-j/vue-starfall'
 ```
 
 ---
 
-## 🌐 Browser Support
+## 🤝 贡献
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-- Requires CSS backdrop-filter support
+欢迎提交 Issue 和 Pull Request！
 
 ---
 
-## 📄 License
+## 📄 开源协议
 
-Apache License 2.0
+[MIT](LICENSE)
 
 Copyright © 2025 李飞恒. All rights reserved.
 
 ---
 
-## 🙏 Acknowledgments
+## 🔗 相关链接
 
-Built with ❤️ using Vue 3 and TypeScript.
-
----
-
-## 📞 Support
-
-- 🐛 [Report Issues](https://github.com/vjsplus-j/vue-starfall/issues)
-- 💬 [Discussions](https://github.com/vjsplus-j/vue-starfall/discussions)
-- 📧 Email: your-email@example.com
+- [GitHub 仓库](https://github.com/vjsplus-j/vue-starfall)
+- [问题反馈](https://github.com/vjsplus-j/vue-starfall/issues)
+- [更新日志](https://github.com/vjsplus-j/vue-starfall/blob/main/CHANGELOG.md)
 
 ---
 
 <div align="center">
 
-**Made with ⭐ by 李飞恒**
+**如果这个项目对你有帮助，请给个 ⭐ Star 支持一下！**
+
+Made with ❤️ by 李飞恒
 
 </div>

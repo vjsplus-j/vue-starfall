@@ -1,71 +1,63 @@
 {
   "name": "@vjsplus-j/vue-starfall",
-  "version": "1.0.0",
-  "description": "🌌 Vue3星空主题组件库 - 让你的应用璀璨如星河",
-  "author": "李飞恒",
-  "license": "Apache-2.0",
-  "copyright": "Copyright © 2025 李飞恒. All rights reserved.",
+  "version": "2.0.0",
+  "description": "🌌 Vue 3 星空主题背景组件库 - 包含AI星空和仙女座星系两大主题，支持性能优化和事件系统",
+  "type": "module",
+  "author": "Copyright © 2025 李飞恒. All rights reserved.",
+  "license": "MIT",
   "keywords": [
     "vue",
     "vue3",
-    "theme",
-    "starry",
-    "login",
-    "glassmorphism",
+    "galaxy",
+    "starfall",
     "background",
-    "ui-components"
+    "theme",
+    "ai-brain",
+    "andromeda"
   ],
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./style.css": "./dist/vue-starfall.css",
+    "./dist/*": "./dist/*"
   },
   "files": [
     "dist",
     "README.md",
-    "LICENSE"
+    "CHANGELOG.md",
+    "LICENSE",
+    "USAGE.md"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --outDir dist",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
   },
-  "peerDependenciesMeta": {
-    "element-plus": {
-      "optional": true
-    },
-    "@element-plus/icons-vue": {
-      "optional": true
-    }
-  },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.1",
-    "sass": "^1.81.0",
-    "terser": "^5.44.1",
+    "@types/node": "^20.11.5",
+    "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.9.3",
     "vite": "^7.1.12",
+    "vite-plugin-dts": "^3.7.0",
     "vue": "^3.5.12",
-    "vue-tsc": "^3.1.2"
+    "vue-tsc": "^2.0.6"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vjsplus-j/vue-starfall"
+    "url": "https://github.com/vjsplus-j/vue-starfall.git"
   },
   "bugs": {
     "url": "https://github.com/vjsplus-j/vue-starfall/issues"
   },
-  "homepage": "https://github.com/vjsplus-j/vue-starfall#readme",
-  "engines": {
-    "node": ">=18.17.0"
-  }
+  "homepage": "https://github.com/vjsplus-j/vue-starfall#readme"
 }
