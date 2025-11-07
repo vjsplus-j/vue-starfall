@@ -9,9 +9,11 @@
 
 精美的星空主题背景组件，包含 **AI星空** 和 **仙女座星系** 两大主题
 
-[在线演示](https://vjsplus-j.github.io/vue-starfall) | [GitHub](https://github.com/vjsplus-j/vue-starfall)
+[在线演示](https://vjsplus-j.github.io/vue-starfall) | [GitHub](https://github.com/vjsplus-j/vue-starfall) | [样式库 →](https://github.com/vjsplus-j/galaxy-styles)
 
 </div>
+
+> **📦 依赖说明：** 本组件库依赖 [@vjsplus-j/galaxy-styles](https://github.com/vjsplus-j/galaxy-styles) 样式库，提供完整的设计系统。安装时会自动安装该依赖。
 
 ---
 
@@ -23,8 +25,9 @@
 - ⚡ **智能性能优化** - 自动设备检测，动态调节渲染元素
 - 🎭 **TypeScript支持** - 完整的类型定义
 - 🔧 **易于集成** - 支持按需导入，开箱即用
-- 💪 **零依赖** - 仅依赖 Vue 3
+- 💪 **轻量依赖** - 仅依赖 Vue 3 和 galaxy-styles
 - 🎉 **v2.0 新增** - 主题配置增强、事件系统、工具函数导出
+- 🎨 **样式库** - 集成 @vjsplus-j/galaxy-styles 设计系统
 
 ---
 
@@ -40,6 +43,9 @@ yarn add @vjsplus-j/vue-starfall
 # pnpm
 pnpm add @vjsplus-j/vue-starfall
 ```
+
+> **💡 提示：** 本组件库依赖 [@vjsplus-j/galaxy-styles](https://github.com/vjsplus-j/galaxy-styles) 样式库。  
+> 如果需要自定义样式或使用设计令牌，请查看 [样式库文档 →](https://github.com/vjsplus-j/galaxy-styles)
 
 ---
 
@@ -213,6 +219,86 @@ import '@vjsplus-j/vue-starfall/style.css'
 
 ---
 
+## 🎨 样式库
+
+> **⚠️ 重要：** 本组件库依赖 [@vjsplus-j/galaxy-styles](https://github.com/vjsplus-j/galaxy-styles) 样式库。  
+> galaxy-styles 提供了完整的设计系统，包括设计令牌、混入、主题等。
+
+### 关于 galaxy-styles
+
+[@vjsplus-j/galaxy-styles](https://github.com/vjsplus-j/galaxy-styles) 是一个独立的星空主题样式库，包含：
+
+- 🎨 **设计令牌** - 颜色、字体、间距、圆角、阴影、动画
+- 🪄 **混入系统** - 玻璃态、渐变、响应式、工具函数
+- 🌌 **主题系统** - 星空深色主题
+- 📦 **按需导入** - 支持 SCSS 模块化导入
+
+**📚 查看完整文档：** [galaxy-styles GitHub →](https://github.com/vjsplus-j/galaxy-styles)
+
+### 安装样式库
+
+```bash
+npm install @vjsplus-j/galaxy-styles
+# 或
+yarn add @vjsplus-j/galaxy-styles
+```
+
+> **💡 提示：** 安装 vue-starfall 时会自动安装 galaxy-styles 作为依赖。
+
+### 导入完整样式
+
+```js
+// main.ts
+import '@vjsplus-j/galaxy-styles'
+```
+
+### 在SCSS中使用设计令牌
+
+```scss
+// 导入所需的令牌和混入
+@use '@vjsplus-j/galaxy-styles/tokens/colors' as *;
+@use '@vjsplus-j/galaxy-styles/tokens/spacing' as *;
+@use '@vjsplus-j/galaxy-styles/mixins/glass' as *;
+@use '@vjsplus-j/galaxy-styles/mixins/gradient' as *;
+
+.my-card {
+  // 使用玻璃态效果
+  @include glass-card;
+  
+  // 使用设计令牌
+  padding: $spacing-lg;
+  color: $text-primary;
+}
+
+.title {
+  // 渐变文字
+  @include gradient-text-primary;
+}
+```
+
+### 可用的样式模块
+
+**设计令牌（Design Tokens）**
+- `tokens/colors` - 颜色系统
+- `tokens/typography` - 字体系统
+- `tokens/spacing` - 间距系统
+- `tokens/radius` - 圆角系统
+- `tokens/shadows` - 阴影系统
+- `tokens/animations` - 动画系统
+
+**混入（Mixins）**
+- `mixins/glass` - 玻璃态效果
+- `mixins/gradient` - 渐变效果
+- `mixins/responsive` - 响应式系统
+- `mixins/utils` - 工具混入
+
+**主题**
+- `themes/galaxy-dark` - 星空深色主题
+
+详细文档请查看：[@vjsplus-j/galaxy-styles](https://github.com/vjsplus-j/galaxy-styles)
+
+---
+
 ## ⚡ 性能优化
 
 组件内置了性能优化机制：
@@ -277,6 +363,7 @@ Copyright © 2025 李飞恒. All rights reserved.
 - [GitHub 仓库](https://github.com/vjsplus-j/vue-starfall)
 - [问题反馈](https://github.com/vjsplus-j/vue-starfall/issues)
 - [更新日志](https://github.com/vjsplus-j/vue-starfall/blob/main/CHANGELOG.md)
+- [📦 样式库 @vjsplus-j/galaxy-styles](https://github.com/vjsplus-j/galaxy-styles) - 本组件库的样式依赖
 
 ---
 

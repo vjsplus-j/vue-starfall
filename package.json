@@ -40,6 +40,9 @@
     "preview": "vite preview",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {
+    "@vjsplus-j/galaxy-styles": "^1.0.0"
+  },
   "peerDependencies": {
     "vue": "^3.5.0"
   },

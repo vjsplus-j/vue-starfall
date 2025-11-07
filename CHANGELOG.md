@@ -5,6 +5,59 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 并且本项目遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [2.1.0] - 2025-11-07
+
+### ✨ 新增功能
+
+#### 完整样式库集成
+
+**设计令牌（Design Tokens）**
+- ✅ `tokens/colors.scss` - 完整的颜色系统（品牌色、功能色、中性色、渐变）
+- ✅ `tokens/typography.scss` - 字体系统（字体族、大小、粗细、行高）
+- ✅ `tokens/spacing.scss` - 间距系统（基础间距、语义化间距）
+- ✅ `tokens/radius.scss` - 圆角系统
+- ✅ `tokens/shadows.scss` - 阴影系统（基础阴影、玻璃态、发光效果）
+- ✅ `tokens/animations.scss` - 动画系统（时长、缓动、关键帧动画）
+
+**混入系统（Mixins）**
+- ✅ `mixins/glass.scss` - 玻璃态效果（从主题SDK提取）
+- ✅ `mixins/gradient.scss` - 渐变效果（渐变文字、渐变边框、星云渐变）
+- ✅ `mixins/responsive.scss` - 响应式系统（断点、媒体查询）
+- ✅ `mixins/utils.scss` - 工具混入（布局、文本、滚动条等）
+
+**核心样式**
+- ✅ `core/reset.scss` - CSS重置
+- ✅ `core/base.scss` - 基础元素样式
+
+**主题系统**
+- ✅ `themes/galaxy-dark.scss` - 星空深色主题（默认）
+
+### 📦 导出增强
+
+- ✅ 新增样式导出路径：`@vjsplus-j/vue-starfall/styles`
+- ✅ 支持按需导入样式模块：`@vjsplus-j/vue-starfall/styles/*`
+- ✅ 提供独立的样式CSS文件：`dist/styles.css`
+
+### 📚 使用方式
+
+**导入完整样式库：**
+```js
+import '@vjsplus-j/vue-starfall/styles'
+```
+
+**在SCSS中使用设计令牌：**
+```scss
+@use '@vjsplus-j/vue-starfall/styles/tokens/colors' as *;
+@use '@vjsplus-j/vue-starfall/styles/mixins/glass' as *;
+
+.my-card {
+  @include glass-card;
+  color: $text-primary;
+}
+```
+
+---
+
 ## [2.0.1] - 2025-11-07
 
 ### 🔧 修复

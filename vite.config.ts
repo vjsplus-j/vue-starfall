@@ -25,7 +25,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['vue'],
+      external: ['vue', '@vjsplus-j/galaxy-styles'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
@@ -33,7 +33,7 @@ export default defineConfig({
         },
         // 保持资源文件名简洁
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') return 'style.css'
+          if (assetInfo.name === 'style.css') return 'vue-starfall.css'
           return assetInfo.name || 'assets/[name][extname]'
         }
       }

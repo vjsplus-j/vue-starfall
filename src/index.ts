@@ -2,10 +2,16 @@
  * @vjsplus-j/vue-starfall
  * Vue 3 星空主题背景组件库
  * 
+ * @features
+ * - 🌌 星空主题组件（AI星空、仙女座星系）
+ * - 🎨 完整样式库（设计令牌、混入、主题系统）
+ * - ⚡ 性能优化（自动设备检测）
+ * - 🎭 TypeScript支持
+ * 
  * @author 李飞恒
  * @copyright Copyright © 2025 李飞恒. All rights reserved.
  * @license MIT
- * @version 2.0.0
+ * @version 2.1.0
  */
 
 import type { App, Plugin } from 'vue'
